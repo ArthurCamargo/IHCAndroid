@@ -11,16 +11,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val numero1 = findViewById<EditText>(R.id.numero1);
-        val numero2 = findViewById<EditText>(R.id.numero2);
+        val number1 = findViewById<EditText>(R.id.number1)
+        val number2 = findViewById<EditText>(R.id.number2)
 
-        val botao = findViewById<Button>(R.id.botao);
+        val sum = findViewById<Button>(R.id.sum)
 
-        val soma = findViewById<TextView>(R.id.soma);
+        val value = findViewById<TextView>(R.id.value)
 
-        botao.setOnClickListener {
-            val sum = numero1.toString().toInt() + numero2.toString().toInt();
-            soma.text = sum.toString();
+        sum.setOnClickListener {
+            var field1 = number1.text.toString()
+            var field2 = number2.text.toString()
+            println(field1)
+            println(field2)
+            if (field1 == "")
+                field1 = "0"
+            if (field2 == "")
+                field2 = "0"
+            value.text = (field1.toInt() + field2.toInt()).toString()
         }
     }
 }

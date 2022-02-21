@@ -7,30 +7,32 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/soma"
+        android:id="@+id/value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Soma"
+        android:text="Soma"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/botao" />
+        app:layout_constraintTop_toBottomOf="@+id/sum" />
 
     <EditText
-        android:id="@+id/numero2"
+        android:id="@+id/number2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="number"
-        android:hint="Segundo Número"
         android:gravity="center"
+        android:hint="Segundo Número"
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/sum"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numero1" />
+        app:layout_constraintTop_toBottomOf="@+id/number1" />
 
     <EditText
-        android:id="@+id/numero1"
+        android:id="@+id/number1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -42,10 +44,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/botao"
+        android:id="@+id/sum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Soma"
-        app:layout_constraintTop_toBottomOf="@+id/numero2"
-        tools:layout_editor_absoluteX="158dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/number2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
