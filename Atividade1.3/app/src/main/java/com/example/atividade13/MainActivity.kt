@@ -14,22 +14,31 @@ import kotlin.math.abs
 private lateinit var sensorManager: SensorManager
 private lateinit var accelerometer: Sensor
 
-class MainActivity : AppCompatActivity(), SensorEventListener {
-    private var coordinate = findViewById<TextView>(R.id.sucesso)
 
-    private val axisX = findViewById<TextView>(R.id.axisx)
-    private val axisY = findViewById<TextView>(R.id.axisy)
-    private val axisZ = findViewById<TextView>(R.id.axisz)
+private lateinit var axisX: TextView
+private lateinit var axisY: TextView
+private lateinit var axisZ: TextView
+
+
+class MainActivity : AppCompatActivity(), SensorEventListener{
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        axisX = findViewById<TextView>(R.id.axisx)
+        axisY = findViewById<TextView>(R.id.axisy)
+        axisZ = findViewById<TextView>(R.id.axisz)
+
+        setUpSensor()
+
+    }
+
+    private fun setUpSensor() {
+        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
     }
 
     override fun onPause() {
@@ -55,17 +64,14 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             axisY.text = sensorY.toString()
             axisZ.text = sensorZ.toString()
 
-            var lastX = sensorX
-            var lastY = sensorY
-            var lastZ = sensorZ
-
-            if(abs(sensorX - lastX) > abs(sensorY - lastY) && abs(sensorX - lastX) > abs(sensorZ - lastZ)) {
+            if((sensorX + sensorY + sensorZ) > 20) {
                 startActivity(intent)
             }
         }
+
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
-
+        return
     }
 }
